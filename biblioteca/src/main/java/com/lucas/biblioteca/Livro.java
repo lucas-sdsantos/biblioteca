@@ -1,4 +1,4 @@
-package main.java.com.lucas.biblioteca;
+package com.lucas.biblioteca;
 
 public class Livro {
     private int id;
