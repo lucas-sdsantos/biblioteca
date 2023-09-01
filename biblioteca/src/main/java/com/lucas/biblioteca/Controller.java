@@ -79,10 +79,11 @@ public class Controller {
     }
 
     // ResponseEntity
+    // FIXME
     @PostMapping("/livro/{titulo}")
     @CrossOrigin(origins = "*")
     public ResponseEntity<Livro> getLivroTitulo(@PathVariable(value = "titulo") String titulo) {
-        Livro resp = (Livro) livros.stream()
+        Livro resp = livros.stream()
                            .filter(livro -> livro.getTitulo().equals(titulo))
                            .findFirst()
                            .orElse(null);
@@ -90,4 +91,14 @@ public class Controller {
                .status(HttpStatus.OK)
                .body(resp);
     }
+
+    // Query String
+    @GetMapping("/livrosporano")
+    @CrossOrigin(origins = "*")
+    public List<Livro> getlivrosPorAno(@RequestParam(value = "ano") int ano) {
+        return livros.stream()
+                     .filter(Livro -> Livro.getAno() == ano)
+                     .toList();
+    }
+    
 }
