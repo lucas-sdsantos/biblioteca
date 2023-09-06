@@ -71,6 +71,7 @@ public class Controller {
     }
 
     // RequestBody
+    // o json enviado deve ter ATRIBUTOS com os MESMOS NOMES
     @PostMapping("/novolivro")
     @CrossOrigin(origins = "*")
     public boolean cadastraLivro(@RequestBody final Livro livro) {
@@ -80,7 +81,7 @@ public class Controller {
 
     // ResponseEntity
     // FIXME
-    @PostMapping("/livro/{titulo}")
+    @PostMapping("/livroTitulo/{titulo}")
     @CrossOrigin(origins = "*")
     public ResponseEntity<Livro> getLivroTitulo(@PathVariable(value = "titulo") String titulo) {
         Livro resp = livros.stream()
