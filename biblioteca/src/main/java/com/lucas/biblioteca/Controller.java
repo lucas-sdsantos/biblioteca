@@ -70,7 +70,7 @@ public class Controller {
                      .toList();
     }
 
-    //Post
+    // RequestBody
     @PostMapping("/novolivro")
     @CrossOrigin(origins = "*")
     public boolean cadastraLivro(@RequestBody final Livro livro) {
@@ -100,5 +100,14 @@ public class Controller {
                      .filter(Livro -> Livro.getAno() == ano)
                      .toList();
     }
+
+    // 
+    @GetMapping("/desatualizados/{ano}")
+    @CrossOrigin(origins = "*")
+    public List<Livro> getLivrosDesatualizados(@PathVariable(value = "ano") int ano) {
+        return livros.stream()
+                     .filter(l -> l.getAno() < ano)
+                     .toList();
+    }  
     
 }
